@@ -24,7 +24,7 @@ jobs:
           cache: 'maven'
 
       - name: Build and test with Maven
-        run: mvn --batch-mode clean verify
+        run: mvn --batch-mode org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar
 
       - name: SonarQube Cloud scan
         env:
