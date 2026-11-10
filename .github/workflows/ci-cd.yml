@@ -24,12 +24,12 @@ jobs:
           cache: 'maven'
 
       - name: Build and test with Maven
-        run: mvn --batch-mode org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar
+        run: mvn --batch-mode clean verify
 
       - name: SonarQube Cloud scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn --batch-mode sonar:sonar
+        run: mvn --batch-mode org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar
 
       - name: Log in to Docker Hub
         if: github.event_name == 'push'
