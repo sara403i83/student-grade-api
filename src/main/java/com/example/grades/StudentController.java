@@ -2,6 +2,7 @@ package com.example.grades;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,7 @@ public class StudentController {
     private static final Logger logger =
             LoggerFactory.getLogger(StudentController.class);
 
-   private final List<Student> students = new ArrayList<>(List.of(
+    private final List<Student> students = new ArrayList<>(List.of(
             new Student(1L, "Ahmed", "SE4111", 95.0),
             new Student(2L, "Sara", "SE4111", 88.5)
     ));
@@ -43,5 +44,11 @@ public class StudentController {
         students.add(s);
         logger.info("Added student: id={}, name={}", s.getId(), s.getName());
         return s;
+    }
+
+    @GetMapping("/health")
+    public Map<String, String> health() {
+        logger.info("Health check called");
+        return Map.of("status", "UP");
     }
 }
